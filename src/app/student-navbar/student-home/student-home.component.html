@@ -1,0 +1,20 @@
+<div style="background-color: white;height: 100vh;padding: 1vw;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;border-radius: 10px;">
+    <h5>STUDY MATERIALS</h5><br>
+    <div class="table-responsive " style="height: 70vh;margin-left: 3vw;" *ngIf="data.length>0 else noo"> 
+        
+      <a href="/student" *ngFor="let c of data;index as i"  (click)="downloadPdf(i)">         
+{{c.course | uppercase}}
+{{c.department | uppercase}}
+{{c.year}} year 
+{{c.semester}} semester
+{{c.subjectcode | uppercase}}
+{{c.subjectname | uppercase}}
+{{c.unit}} .... click to download
+              <br>  
+           </a>    
+           
+    </div>
+    <ng-template #noo>
+      No materials are updated yet !
+    </ng-template>
+    </div>

@@ -1,0 +1,49 @@
+<div *ngIf="!savedm; else hello" >
+<span style="cursor: pointer;color: crimson;float: right;"><div><strong>Excel Format</strong><br>
+    <table class="table  text-center table-borderless" style="color:#152238;;width: 30vw;font-size: 12px;"><tr style="border-bottom:0.5px solid lightgrey">
+        <td >Student mail ID&nbsp;</td><td>&nbsp;Mentor mail ID&nbsp;</td></tr><tr></tr>
+        <tr style="color: grey"><td >*******@mits.ac.in</td><td>*********@mits.ac.in</td></tr></table></div></span><br>
+    <h5>ASSIGN MENTORS</h5><br>
+    <div style="margin-left: 2vw;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+        <input class="form-control" *ngIf="mapping.length==0" type="file" accept=".xlsx" multiple="false"(change)="onfilesubmit($event)">
+       
+        <button *ngIf="saveMode" style="float: right;margin-left:10px ;" class="btn btn-danger" (click)="refresh()">CLOSE</button>
+        <button *ngIf="saveMode" style="float: right;background-color:#152238 ;color: white;" class="btn" (click)="save()">{{savingMode}} DATA</button><br>
+      <div *ngIf="mapping.length>0" class="table-responsive"  style="box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;height:70vh;padding: 2%;width: 60%;">
+    <table class="table text-center table-borderless">
+                 <th *ngFor="let head of keys" style="color:#152238;">
+                    {{head}}</th>
+                 <tr *ngFor="let row of mapping" style="color: grey;"> <td>{{row.mail}}</td>
+                     <td>
+                             {{row.studentmail}} </td> 
+                    
+                     
+                 </tr>
+                 
+             </table>
+            </div>
+    </div></div>
+<ng-template #hello>
+    SUCCESSFULLY SAVED
+</ng-template>

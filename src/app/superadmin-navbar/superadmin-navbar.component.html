@@ -1,0 +1,50 @@
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+ <div [ngClass]="navMode ? 'sidebar active' : 'sidebar'">
+   <div class="logo_content">
+     <div class="logo">
+        <i class='bx bx-laptop'></i>
+       <div class="logo_name">DIGITALS</div>
+     </div>
+     <i class='bx bx-menu-alt-right' (click)="changeNav()" id="btn" ></i>
+   </div>
+   <ul class="nav_list">
+       <li>
+           <a routerLink="/superadmin"  routerLinkActive="clicked"
+           [routerLinkActiveOptions]="{ exact: true }">
+           <i class='bx bxs-user'></i>
+             <span class="links_name">Users</span>
+           </a>
+           <span class="tooltip">Users</span>
+         </li>
+         <li>
+            <a routerLink="/superadmin/registeradmin"  routerLinkActive="clicked">
+              <i class='bx bxs-add-to-queue'></i>
+              <span class="links_name">Register</span>
+            </a>
+            <span class="tooltip">Register</span>
+          </li>
+          <li>
+            <a routerLink="/superadmin/uploadusers"  routerLinkActive="clicked">
+              <i class='bx bx-group'></i>
+              <span class="links_name">Upload admins</span>
+            </a>
+            <span class="tooltip">Upload admins</span>
+          </li>
+     
+   </ul>
+ </div>
+ <div class="home_content">
+   <nav class="navbar navstyle">
+     {{username}}
+     &nbsp;&nbsp;
+     <a style="font-size: 13px;color: crimson;font-weight: 500;" (click)="logout()">LOGOUT</a>
+   </nav>
+   <div style="margin: 2%;"><router-outlet></router-outlet></div>
+ </div>
+
+
+</body>
+

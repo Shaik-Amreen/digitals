@@ -1,0 +1,30 @@
+<div>
+    <h5>MENTORS</h5><br>
+    <br><br>
+    <div class="table-responsive" style="height: 70vh;" *ngIf="data.length>0 else noo"> 
+        <table  class="table table-borderless text-center " style="width: 50vw;">
+            <thead>
+                <tr>
+                   
+                    
+                    <th>Mentor Mail</th>
+                    <th>Student Mail</th>
+               
+                </tr>
+            </thead>
+           <tbody>
+            <tr *ngFor="let c of data">
+               
+                <td>{{c.mail}}</td>
+               
+                <td>{{c.studentmail}}</td>
+                
+                
+            </tr>
+           </tbody>
+        </table>
+    </div>
+    <ng-template #noo>
+        no mentors assigned
+    </ng-template>
+    </div>

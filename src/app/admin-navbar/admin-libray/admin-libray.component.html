@@ -1,0 +1,22 @@
+<div class="layout">
+    <h5>UPLOAD BOOKS</h5>
+    <br>
+<form [formGroup]="materials" style="margin-left: 2vw;" *ngIf="!savedata else saved">
+        <div style="display: flex;" >
+        <label>Book name<input formControlName="bookname" class="form-control"></label>&nbsp;&nbsp;
+        <div *ngIf="materials.value.bookname!=''" style="display: flex;">
+            <label>Upload file<br>
+                <input type="file" class="form-control" class="form-control" (change)="onFileSelected($event)"  accept="application/pdf"/> </label>
+            </div>
+             <br>&nbsp;&nbsp;
+             <div><br><button *ngIf="base64Output!=''" class="btn" style="background:#152238;color: white;" (click)="save()">
+                SAVE</button>&nbsp;&nbsp;
+               <button  class="btn btn-danger" *ngIf="base64Output!=''" (click)="refresh()">CLOSE</button>
+               </div>
+          
+        </div>           
+    </form>
+    <ng-template #saved>
+        SUCCESSFULLY SAVED
+    </ng-template>
+</div>

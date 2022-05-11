@@ -1,0 +1,14 @@
+<div style="height: 100vh;padding: 1vw;">
+    <h5>Books</h5><br>
+    <div class="table-responsive " style="height: 70vh;margin-left: 3vw;" *ngIf="data.length>0 else noo"> 
+        
+      <a href="/student/books" *ngFor="let c of data;index as i"  (click)="downloadPdf(i)">         
+{{c.bookname}} .... click to download
+              <br>  
+           </a>    
+           
+    </div>
+    <ng-template #noo>
+No books uploaded yet !
+    </ng-template>
+    </div>

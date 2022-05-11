@@ -1,0 +1,122 @@
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+ <div [ngClass]="navMode ? 'sidebar active' : 'sidebar'">
+   <div class="logo_content">
+     <div class="logo">
+        <i class='bx bx-laptop'></i>
+       <div class="logo_name">DIGITALS</div>
+     </div>
+     <i class='bx bx-menu-alt-right' (click)="changeNav()" id="btn" ></i>
+   </div>
+   <ul class="nav_list">
+    <span class="links_name" style="color: #E4E9F7;margin-left: 0.5vw;">UPLOAD</span>
+       <li *ngIf="role.includes('hod')">
+           <a routerLink="/admin"   routerLinkActive="clicked"
+           [routerLinkActiveOptions]="{ exact: true }">
+           <i class='bx bxs-user-plus'></i>
+             <span class="links_name">Students</span>
+           </a>
+           <span class="tooltip">Upload Students</span>
+         </li>
+         <li *ngIf="role.includes('hod')">
+            <a routerLink="/admin/assigntechnicalhead"    routerLinkActive="clicked">
+              <i class='bx bxs-layer-plus'></i>
+              <span class="links_name">Technical heads</span>
+            </a>
+            <span class="tooltip">Assign Technical heads</span>
+          </li>
+          <li *ngIf="role.includes('hod')">
+            <a routerLink="/admin/assignmentor"    routerLinkActive="clicked">
+              <i class='bx bx-list-plus'></i>
+              <span class="links_name"> Mentors</span>
+            </a>
+            <span class="tooltip">Assign Mentors</span>
+            
+          <li  *ngIf="role.includes('faculty')">
+            <a routerLink="/admin/uploadmaterials"  routerLinkActive="clicked">
+            <i class='bx bxs-folder-plus'></i>
+              <span class="links_name">Study materials</span>
+            </a>
+            
+            <span class="tooltip"> Upload Study materials</span>
+          </li>
+          <li *ngIf="role.includes('librarian')">
+            <a routerLink="/admin/library"    routerLinkActive="clicked">
+              <i class='bx bxs-book-add'></i>
+              <span class="links_name">Books</span>
+            </a>
+            <span class="tooltip">Upload Books</span>
+          </li>
+          <span class="links_name" style="color: #E4E9F7;margin-left: 0.5vw;">ACCESS</span>
+          <li *ngIf="role.includes('hod')">
+            <a routerLink="/admin/students" routerLinkActive="clicked" >
+            <i class='bx bxs-user'></i>
+              <span class="links_name">Students</span>
+            </a>
+            
+            <span class="tooltip">Students</span>
+          </li>
+          <li *ngIf="role.includes('hod')">
+             <a routerLink="/admin/accesstechnicalhead"    routerLinkActive="clicked">
+                 <i class='bx bx-cube'></i>
+               <span class="links_name">Technical heads</span>
+             </a>
+             <span class="tooltip">Technical heads</span>
+           </li>
+           <li *ngIf="role.includes('hod')">
+        
+            <a href="http://159.65.141.127/" target="_blank" rel="noopener noreferrer">
+              <i class='bx bx-line-chart'></i>
+              <span class="links_name">GEMS</span>
+            </a>
+            <span class="tooltip">GEMS</span>
+        
+        </li>
+           <li *ngIf="role.includes('hod')">
+             <a routerLink="/admin/accessmentor"    routerLinkActive="clicked">
+               <i class='bx bx-group'></i>
+               <span class="links_name">Mentors</span>
+             </a>
+             <span class="tooltip">Mentors</span>
+           </li>
+           <li  *ngIf="role.includes('faculty')">
+             <a routerLink="/admin/accessmaterials"  routerLinkActive="clicked">
+              <i class='bx bxs-folder'></i>
+               <span class="links_name">Study materials</span>
+             </a>
+             <span class="tooltip">Study materials</span>
+           </li>
+           <li *ngIf="role.includes('faculty')">
+        
+            <a href="http://159.65.141.127/" target="_blank" rel="noopener noreferrer">
+              <i class='bx bx-line-chart'></i>
+              <span class="links_name">GEMS</span>
+            </a>
+            <span class="tooltip">GEMS</span>
+        
+        </li>
+           <li *ngIf="role.includes('librarian')">
+             <a routerLink="/admin/accesslibrary"    routerLinkActive="clicked">
+               <i class='bx bxs-book-alt'></i>
+               <span class="links_name">Books</span>
+             </a>
+             <span class="tooltip">Books</span>
+           </li>
+      
+   </ul>
+ </div>
+ <div class="home_content">
+   <nav class="navbar navstyle">
+     
+     {{username}}
+     &nbsp;&nbsp;
+     <a style="font-size: 13px;color: crimson;font-weight: 500;" (click)="logout()">LOGOUT</a>
+   </nav>
+   <div style="margin: 2%;"><router-outlet></router-outlet></div>
+ </div>
+
+
+</body>
+

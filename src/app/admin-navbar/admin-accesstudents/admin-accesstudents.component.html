@@ -1,0 +1,53 @@
+
+    <h5>STUDENTS</h5><br>
+    <div style="margin-left: 2vw;">
+        
+        <span style="display: flex;">
+           <label>Course<select [(ngModel)]="course" class="form-control" (change)="data=[];savedata=false"> 
+                <option value="btech">BTECH</option>
+                <option value="mba">MBA</option>
+                <option value="mca">MCA</option>
+            </select></label>&nbsp;
+<label *ngIf="course=='btech'">Department
+    <select class="form-control" [(ngModel)]="department" (change)="data=[];savedata=false" >
+        <option *ngFor="let dept of btech" value={{dept}}>{{dept | uppercase }}</option>
+    </select></label>
+    &nbsp;&nbsp;&nbsp;<span  *ngIf="course=='btech' && department!=''"><br><button class="btn" (click)="save()" style="color: white;background-color: #152238;">FETCH</button>
+        </span>
+        <span *ngIf="course!='btech' && course!=''"><br><button class="btn" (click)="save()" style="color: white;background-color: #152238;">FETCH</button>
+        </span>
+    </span><br>
+    <div class="table-responsive" style="height: 70vh;" *ngIf="data.length>0"> 
+    <table  class="table table-borderless text-center " style="width: 70vw;">
+        <thead>
+            <tr>
+               
+                
+                <th>Username</th>
+                <th>Rollnumber</th>
+                <th>Mail</th>
+                <th>Course</th>
+                <th *ngIf="course=='btech'">Department</th>
+                
+                <th>Year of joining</th>
+                <th>Mobile</th>
+            </tr>
+        </thead>
+       <tbody>
+        <tr *ngFor="let c of data">
+            <td>{{c.username}}</td><td>{{c.rollnumber}}</td>
+            <td>{{c.mail}}</td>
+           
+            <td>{{c.course}}</td>
+            <td  *ngIf="course=='btech'">{{c.department}}</td><td>{{c.yearofjoining}}</td>
+             <td>{{c.mobile}}</td>
+            
+        </tr>
+       </tbody>
+    </table>
+   </div>
+   <div *ngIf="data.length==0 && savedata==true">
+       No students enrolled
+   </div>
+    </div>
+

@@ -1,0 +1,9 @@
+a:hover{
+    color: crimson;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: #152238;
+    font-size: 13px;
+}

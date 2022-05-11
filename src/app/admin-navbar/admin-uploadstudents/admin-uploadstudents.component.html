@@ -1,0 +1,50 @@
+
+   <div *ngIf="!savedata else sss"> 
+    <span style="cursor: pointer;color: crimson;float: right;"><div><strong>Excel Format</strong><br>
+        <table class="table  text-center table-borderless" style="color:#152238;;width: 30vw;font-size: 12px;"><tr style="border-bottom:0.5px solid lightgrey">
+            <td>&nbsp;username&nbsp;</td><td >rollnumber&nbsp;</td><td>&nbsp;year of joining&nbsp;</td><td>&nbsp;mobile&nbsp;</td></tr><tr></tr>
+            <tr style="color: grey"><td ></td><td>**********</td></tr></table></div></span><br>
+        <h5>UPLOAD STUDENTS USING EXCEL</h5><br>
+    <div style="margin-left: 2vw;">
+        
+        <span *ngIf="mapping.length==0 else getrole" style="display: flex;">
+           <label>Course<select [(ngModel)]="course" class="form-control">
+                <option value="btech">BTECH</option>
+                <option value="mba">MBA</option>
+                <option value="mca">MCA</option>
+            </select></label>&nbsp;
+<label *ngIf="course=='btech'">Department
+    <select class="form-control" [(ngModel)]="department" >
+        <option *ngFor="let dept of btech" value={{dept}}>{{dept | uppercase }}</option>
+    </select></label>
+    </span>
+    <ng-template #getrole>
+       <h6 style="color:crimson"><strong>Uploading {{course}} {{department}} student's data</strong></h6>
+    </ng-template><br>
+    <div>
+        <input class="form-control" *ngIf="department!='' && course=='btech'" type="file" accept=".xlsx" multiple="false"(change)="onfilesubmit($event)">
+        <input class="form-control" *ngIf="course!=='btech' && course!=''" type="file" accept=".xlsx" multiple="false"(change)="onfilesubmit($event)"><br>
+        <button *ngIf="saveMode" style="float: right;margin-left:10px ;" class="btn btn-danger" (click)="refresh()">CLOSE</button>
+        <button *ngIf="saveMode" style="float: right;background-color:#152238 ;color: white;" class="btn" (click)="save()">{{savingMode}} DATA</button><br>
+      <div *ngIf="mapping.length>0" class="table-responsive"  style="box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;height:65vh;padding: 2%;width: 60%;">
+    <table class="table text-center table-borderless">
+                 <th *ngFor="let head of keys" style="color:#152238;">
+                    {{head}}</th>
+                 <tr *ngFor="let row of mapping" style="color: grey;">
+                     <td>
+                             {{row.username}} </td> 
+                     <td>{{row.rollnumber}}</td>
+                     <td>{{row.yearofjoining}}</td>
+                     <td>{{row.mobile}}</td>
+                     
+                 </tr>
+                 
+             </table>
+            </div>
+    </div>
+    </div>
+
+</div>
+<ng-template #sss><br><br>
+    SUCCESSFULLY SAVED
+</ng-template>

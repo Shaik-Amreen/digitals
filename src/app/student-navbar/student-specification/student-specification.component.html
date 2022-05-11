@@ -1,0 +1,37 @@
+<br><br>
+<div class="table-responsive" style="height: 95vh;" *ngIf="!stored else sto">
+<div *ngIf="data.length!=0 else empty">
+<span style="color: crimson;font-weight: 700;">Interests</span><br>
+<span *ngFor="let c of selectedcourse;index as i" style="align-items: center;margin-left: 2vw;">
+   
+      <label>&nbsp;{{c.specialization}}</label><br>
+      
+</span><br>
+<span *ngIf="specification.length!=selectedcourse.length" style="color: crimson;font-weight: 700;"> Add interests</span><br>
+<span *ngFor="let c of specification;index as i" style="align-items: center;margin-left: 1vw;">
+   <span *ngIf="!selectedcourse.includes(c)"> <input  type="checkbox" (click)="edit(c)">
+     <label>&nbsp;{{c.specialization}}</label><br>
+     </span>
+</span>
+<br><button class="btn"  (click)="submit()" *ngIf="specification.length!=selectedcourse.length"  [disabled]="editedata.length==0" style="color: white;background-color: #152238;">SUBMIT</button>
+</div>
+<ng-template #empty>
+    <span style="color: crimson;font-weight: 700;" *ngIf="specification.length!=0 else hurr">You have not selected your Intrests . Please select !</span>
+<ng-template #hurr><span style="color: crimson;font-weight: 700;">Interests are not uploaded yet ! </span>
+</ng-template>
+</ng-template>
+
+
+<div *ngIf="selectoption==true" style="margin-left: 4vw;">
+<br>
+    <span *ngFor="let c of specification;index as i " style="align-items: center;">
+      <input type="checkbox" (click)="edit(c)"> <label>&nbsp;{{c.specialization}}</label><br>
+    </span>
+<br><br>
+<button class="btn" [disabled]="editedata.length==0" (click)="submit()" style="color: white;background-color: #152238;">SUBMIT</button>
+</div>
+
+</div>
+<ng-template #sto>
+    SUCCESSFULY SAVED
+</ng-template>

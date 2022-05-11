@@ -1,0 +1,11 @@
+<div class="layout">
+    <div *ngIf="!available">
+        <span style="color: crimson"><strong>Records are Out of stock !</strong> </span>&nbsp; <strong>If available ,</strong> to inform students<br><br>
+            <button class="btn" style="background-color: #152238;color: white" (click)="send('yes')">{{savemode}} MAIL</button>
+    </div>
+    <div *ngIf="available" style="color: crimson;">
+        <span style="color: #152238"><strong>Records are available !</strong></span>&nbsp;
+         <strong>If out of stock ,</strong> to inform students<br><br>
+        <button class="btn" (click)="send('no')" style="background-color: crimson;color: white">{{savemode}} MAIL</button>
+</div>
+</div>

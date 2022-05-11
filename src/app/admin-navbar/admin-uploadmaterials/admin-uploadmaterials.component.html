@@ -1,0 +1,59 @@
+<div class="layout" *ngIf="!savedata else saved">
+    <h5>UPLOAD STUDY MATERIALS</h5>
+    <br>
+    <form [formGroup]="materials" style="margin-left: 2vw;" >
+        <div style="display: flex;">
+            <label>Year of joining<input formControlName="yearofjoining" style="width: 7vw;" type="number" min=2019  max=2030 class="form-control">
+              
+         </label>
+        <label *ngIf="materials.value.yearofjoining>2019">Course<select formControlName="course"   class="form-control">
+            <option value="btech">BTECH</option>
+            <option value="mba">MBA</option>
+            <option value="mca">MCA</option>
+        </select></label>
+        <div *ngIf="materials.value.course=='btech' else mba">
+            <label>Department<br>
+            <select formControlName="department" class="form-control">
+                <option *ngFor="let dept of btech" value={{dept}}>{{dept | uppercase }}</option>
+            </select></label>
+            <label *ngIf="materials.value.department!=''">Year
+            <select formControlName="year" class="form-control">
+                <option value="1">I</option>
+                <option value="2">II</option>
+                <option value="3">III</option>
+                <option value="4">IV</option>
+              </select></label>
+        </div>
+          <ng-template #mba>
+   <label *ngIf="materials.value.course!='btech' && materials.value.course!=''" >Year<br>
+            <select formControlName="year" class="form-control">
+                <option value="1">I</option>
+                <option value="2">II</option>
+              </select></label>
+          </ng-template>
+          <label *ngIf="materials.value.year!=''" >Semester<br>
+            <select formControlName="semester" class="form-control">
+                <option value="1">I</option>
+                <option value="2">II</option>
+              </select></label>
+              <label *ngIf="materials.value.semester!=''">Subject name<br><input formControlName="subjectname" class="form-control"/></label>
+            <label *ngIf="materials.value.subjectname!=''">Subject code<br><input style="width: 7vw;" formControlName="subjectcode" class="form-control"/></label>
+            <label *ngIf="materials.value.subjectcode!=''">Topic<br><input formControlName="unit" class="form-control"/></label>
+            </div><br>
+            <div *ngIf="materials.value.unit!=''" style="display: flex;">
+            <label>Upload file<br>
+                <input type="file" class="form-control" (change)="onFileSelected($event)"  accept="application/pdf"/> </label><div>
+             <br>&nbsp;&nbsp;<button *ngIf="base64Output!=''" class="btn" style="background:#152238;color: white;" (click)="save()">SAVE</button>&nbsp;&nbsp;
+               <button  class="btn btn-danger" *ngIf="base64Output!=''" (click)="refresh()">CLOSE</button>
+               </div>
+            </div>
+            
+                    
+                
+               
+    </form>
+   
+</div>
+<ng-template #saved>
+    <div class="layout">SUCCESSFULLY SAVED</div>
+</ng-template>

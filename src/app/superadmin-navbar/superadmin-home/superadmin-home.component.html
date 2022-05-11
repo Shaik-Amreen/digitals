@@ -1,0 +1,72 @@
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<div class="layout">
+    <div class="row justify-content-md-center">
+        <div class="col-3 spacing">
+            USERS
+            <table class="users">
+                <tbody *ngFor="let d of pd;index as i">
+                <tr><td><button [ngClass]="d.mail==selectedUser.mail ? 'buttoncolor' : 'btn'" (click)="selectUser(i)"><strong>{{d.username}}</strong><br>
+                    {{d.mail}}</button></td></tr>
+                </tbody>
+            </table>
+            
+        </div>
+<div class="col-8 spacing "><br><br><br>       
+            <div class="card p-1" style="font-size: 15px ;width:550px;box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;" *ngIf="selectedMode else empty">
+                 <div *ngIf="edit==false else editmode">
+                    <div class="row">
+                        <div class="col-3" style="color: lightblue;font-size: 100px;">
+                            <i class='bx bxs-user-circle'></i>
+                        </div>
+                    <div class="col" style="text-align: left;color: grey;"><br>
+                       <strong> {{pd[indeexnum].username}} </strong><br>
+                       
+                        <span *ngFor="let e of pd[indeexnum].role">{{e}} &nbsp;</span><br>
+                        {{pd[indeexnum].mail}}<br>
+                    </div>
+                    </div>
+                    <div>
+                        <button *ngIf="facdata.length>1 && mail!=selectedUser.mail" class="dangercolor p-2" (click)="deleteuser()">Delete User<i class='bx bxs-trash'></i></button>
+                        <button class="buttoncolor p-2" (click)="edit=true"><i class='bx bxs-edit'></i>Edit</button>
+                    </div>
+
+                    
+                </div>
+                <ng-template #editmode>
+                    <form style="text-align:left;margin:3vh" [formGroup]="userform" >
+                      <label style="color: gray;">Username</label><br>
+                      <input class="form-control" formControlName="username" ><br>
+                    
+                        <label *ngIf=" mail!=selectedUser.mail" style="color: gray;">Role</label><br>
+                        <table style="margin-left: 2vw;" >
+                        <tr style="color: grey;" *ngFor="let c of selectedUser.role; index as r">
+                            
+                            <td>{{ c | uppercase }}</td> <td></td>
+                            <td *ngIf="selectedUser.role.length>1"><button style="color: crimson;background-color: white;" (click)="removelevel(r)" id="b">
+                                <h3 style="margin-top:10px;"><i class='bx bxs-user-x'></i></h3>
+                            </button></td>
+                        </tr>
+                        </table>
+                        <button type="submit" style="background: #000124;" id="b" (click)="save()">SAVE</button>
+                       
+                        <button type="button" style="background: crimson;" id="b" (click)="close()">CLOSE</button>
+                    </form>
+                </ng-template>
+
+           
+            </div>
+
+        
+
+</div>
+           <ng-template #empty>
+                <div class="aligncenter">
+                    Please select user
+                </div>
+            </ng-template>
+        </div>
+    </div> 
+    
+
+       
+    

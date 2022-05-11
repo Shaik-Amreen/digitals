@@ -1,0 +1,19 @@
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    
+<div class="container">
+    <div class="row align-items-center" style="height: 100vh;">
+        <div class="col">
+            <img src="../../assets/image.jpg" />
+        </div>
+        <div class="col" style="margin-left: 5vw;">
+            <div class="danger" *ngIf="errorMode"><i class='bx bxs-error-circle'></i>&nbsp;{{errorMessage }}</div><br>
+            <form [formGroup]="signInForm" (ngSubmit)="signIn()">
+              <h1 class="heading">Sign in</h1><br>
+               <input (click)="errorMode=false" formControlName="mail" class="form-control" type="email" placeholder="EMAIL"/><br>
+               <input (click)="errorMode=false" formControlName="password" class="form-control" type="password" placeholder="PASSWORD"><br>
+               <button class="btn btn-primary" [disabled]="!signInForm.valid" >LOGIN</button>
+            </form>
+        </div>
+    </div>
+</div>
+

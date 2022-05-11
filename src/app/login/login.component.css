@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+input{
+    background-color: white;
+    width: 70%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.heading{
+    color: #5bc0de;
+    font-family: 'Mochiy Pop P One';
+}
+.danger{
+    font-weight: 700;
+    color: crimson;
+    font-family: 'Roboto Slab';
+}

@@ -1,0 +1,123 @@
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+ <div [ngClass]="navMode ? 'sidebar active' : 'sidebar'">
+   <div class="logo_content">
+     <div class="logo">
+        <i class='bx bx-laptop'></i>
+       <div class="logo_name">DIGITALS</div>
+     </div>
+     <i class='bx bx-menu-alt-right' (click)="changeNav()" id="btn" ></i>
+   </div>
+   <ul class="nav_list">
+    
+       <li>
+           <a routerLink="/student"  routerLinkActive="clicked"
+           [routerLinkActiveOptions]="{ exact: true }">
+           <i class='bx bxs-folder'></i>
+             <span class="links_name">Study materials</span>
+           </a>
+           <span class="tooltip">Study materials</span>
+         </li>
+
+         <li>
+          <a routerLink="/student/specification"  routerLinkActive="clicked"
+         >
+         <i class='bx bxs-graduation'></i>
+            <span class="links_name">specializations</span>
+          </a>
+          <span class="tooltip">Specializations</span>
+        </li>
+        <li>
+          <a routerLink="/student/books"  routerLinkActive="clicked"
+         >
+         <i class='bx bxs-book-bookmark'></i>
+            <span class="links_name">Books</span>
+          </a>
+          <span class="tooltip">Books</span>
+        </li>
+         
+         <li>
+        
+          <a href="http://182.76.43.238/login/index.php" target="_blank" rel="noopener noreferrer">
+            <i class='bx bxs-file-export'></i>
+            <span class="links_name">MOODLE</span>
+          </a>
+          <span class="tooltip">MOODLE</span>
+        </li>
+        <li>
+        
+          <a href="https://swayamopenid.b2clogin.com/swayamopenid.onmicrosoft.com/B2C_1_swayam2/oauth2/v2.0/authorize?response_type=code&client_id=019220f4-2ec0-41c2-a727-529f1b54bb06&redirect_uri=https%3A%2F%2Fswayam.gov.in%2Fwso_ok&scope=https%3A%2F%2Fswayamopenid.onmicrosoft.com%2Fapi%2Fuser_impersonation+offline_access+openid&state=PBgpXQTl1hh6USWkLhjhgDEVoFCUbQ&access_type=authorization_code" target="_blank" rel="noopener noreferrer">
+            <i class='bx bxs-book-content'></i>
+            <span class="links_name">NPTEL</span>
+          </a>
+          <span class="tooltip">NPTEL</span>
+        </li>
+        <li>
+        
+          <a href="http://159.65.141.127/" target="_blank" rel="noopener noreferrer">
+            <i class='bx bx-line-chart'></i>
+            <span class="links_name">GEMS</span>
+          </a>
+          <span class="tooltip">GEMS</span>
+        </li>
+        <li>
+        
+          <a href="https://www.indiabix.com/" target="_blank" rel="noopener noreferrer">
+            <i class='bx bxs-pen'></i>
+            <span class="links_name">Aptitude</span>
+          </a>
+          <span class="tooltip">Aptitude</span>
+        </li>   
+        <li>
+        
+          <a href="https://jgateplus.com/home/" target="_blank" rel="noopener noreferrer">
+            <i class='bx bxs-game'></i>
+            <span class="links_name">GATE</span>
+          </a>
+          <span class="tooltip">GATE</span>
+        </li> 
+        <li>
+        
+          <a href="https://www.urbanpro.com/online-communication-skills-training?_r=sem|google-n|Demo_BList|11484383458_110110340097|how%20to%20improve%20communication%20skills_475635370556_b_g__c_&_hideListing=true&gclid=CjwKCAiAqIKNBhAIEiwAu_ZLDiPoggYbNvhGx7SlGFG21EQBP5iR-nXdRH2Zhm-QAxdydYcLwbTJ5hoCQ4UQAvD_BwE" target="_blank" rel="noopener noreferrer">
+            <i class='bx bxs-user-voice' ></i>
+            <span class="links_name">Communication</span>
+          </a>
+          <span class="tooltip">Communication</span>
+        </li>
+        <li>
+        
+          <a href="https://www.hackerrank.com/auth/signup" target="_blank" rel="noopener noreferrer">
+            <i class='bx bx-code-curly' ></i>
+            <span class="links_name">Coding</span>
+          </a>
+          <span class="tooltip">Coding</span>
+        </li> 
+             
+
+
+
+        
+     
+   </ul>
+ </div>
+ <div class="home_content">
+  
+   <nav class="navbar navstyle">
+
+     {{username}}
+     &nbsp;&nbsp;
+     <a style="font-size: 13px;color: crimson;font-weight: 500;" (click)="logout()">LOGOUT</a>
+   </nav>
+  
+   <div style="margin: 2%;">
+    <marquee direction="right"  style="color: crimson;font-weight: 700;"  *ngIf="available" >
+     Records are available ! Please collect .
+      </marquee>  
+    <router-outlet></router-outlet></div>
+ </div>
+
+
+</body>
+
