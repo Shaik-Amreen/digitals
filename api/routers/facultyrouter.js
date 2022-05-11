@@ -1,0 +1,11 @@
+const express=require("express");
+var router = express.Router();
+var faculty = require('../controllers/facultycontroller');
+var facultydetails = require('../controllers/facultydetailscontroller');
+router.post('/uploadmaterial',faculty.uploadmaterial);
+router.post('/getmaterial',faculty.getmaterial);
+router.post('/getstudentmaterial',faculty.getstudentmaterial);
+router.post('/updatematerial',faculty.updatematerial);
+router.post('/uploadfacultydetails',facultydetails.uploadfacultydetails);
+router.post('/getfacultydetails',facultydetails.getfacultydetails);
+module.exports=router;
